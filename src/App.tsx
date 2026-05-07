@@ -149,6 +149,13 @@ function App() {
     };
   }, [isRunning, sequence, speed, step]);
 
+  const expectedDigits = sequence.join("");
+  const displayedDigits = isRunning
+    ? (sequence[step] ?? "")
+    : hasStarted || result
+      ? digits
+      : digits || "0";
+
   return (
     <main className="bg-background text-foreground flex min-h-screen items-center justify-center px-5">
       <section className="w-full max-w-sm">
@@ -175,19 +182,31 @@ function App() {
           <div className="space-y-3">
             <div
               aria-label="Digit display"
-              className="flex h-20 w-full items-center justify-center border-b-2 border-black bg-transparent text-center font-sans text-4xl tracking-[0.18em] tabular-nums select-none"
+              className="flex h-20 w-full items-center justify-center gap-1 border-b-2 border-black bg-transparent text-center font-sans text-4xl tracking-[0.18em] tabular-nums select-none"
               role="status"
             >
-              {isRunning
-                ? (sequence[step] ?? "")
-                : hasStarted
-                  ? digits
-                  : digits || "0"}
+              {result ? (
+                digits.split("").map((digit, index) => (
+                  <span
+                    className={cn(
+                      result === "success" && "text-green-600",
+                      result === "failure" &&
+                        digit !== sequence[index] &&
+                        "text-red-600",
+                    )}
+                    key={`${digit}-${index}`}
+                  >
+                    {digit}
+                  </span>
+                ))
+              ) : (
+                displayedDigits
+              )}
             </div>
 
             <p
               className={cn(
-                "h-5 text-center text-sm font-medium",
+                "h-10 text-center text-sm font-medium",
                 result === "success" && "text-green-600",
                 result === "failure" && "text-red-600",
                 result === null && "text-muted-foreground",
@@ -196,7 +215,14 @@ function App() {
               {result === "success"
                 ? resultMessage
                 : result === "failure"
-                  ? resultMessage
+                  ? (
+                      <>
+                        {resultMessage}
+                        <span className="block text-muted-foreground">
+                          Correct: {expectedDigits}
+                        </span>
+                      </>
+                    )
                   : hasStarted && !isRunning
                     ? `Enter ${sequence.length} digits`
                     : ""}
