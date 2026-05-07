@@ -13,6 +13,7 @@ const speedDelay: Record<Speed, number> = {
 
 const digitSpanDescriptionUrl =
   "http://help.cambridgebrainsciences.com/en/articles/624895-what-is-the-digit-span-test";
+const githubRepoUrl = "https://github.com/maxpn01/digit-span-test";
 const countOptions = Array.from({ length: 10 }, (_, index) => index + 3);
 const successMessages = [
   "🥳 you got it!",
@@ -158,6 +159,23 @@ function App() {
 
   return (
     <main className="bg-background text-foreground flex min-h-screen items-center justify-center px-5">
+      <a
+        aria-label="Open GitHub repository"
+        className="text-muted-foreground hover:text-foreground focus-visible:ring-ring hover:bg-accent absolute top-5 right-5 inline-flex size-10 items-center justify-center rounded-full border transition-colors focus-visible:ring-2 focus-visible:outline-none"
+        href={githubRepoUrl}
+        rel="noreferrer"
+        target="_blank"
+      >
+        <svg
+          aria-hidden="true"
+          className="size-5"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path d="M12 .5A11.5 11.5 0 0 0 8.36 22.9c.58.1.79-.25.79-.56v-2.15c-3.22.7-3.9-1.38-3.9-1.38-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.04 1.76 2.71 1.25 3.37.96.1-.75.4-1.25.73-1.54-2.57-.3-5.27-1.29-5.27-5.72 0-1.26.45-2.3 1.2-3.1-.12-.3-.52-1.48.11-3.06 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.58.24 2.76.12 3.06.75.8 1.2 1.84 1.2 3.1 0 4.45-2.7 5.42-5.28 5.7.42.37.79 1.09.79 2.2v3.13c0 .31.2.67.8.56A11.5 11.5 0 0 0 12 .5Z" />
+        </svg>
+      </a>
+
       <section className="w-full max-w-sm">
         <header className="mb-10 flex items-center justify-center gap-3">
           <Brain className="size-10" strokeWidth={1.8} />
@@ -185,23 +203,21 @@ function App() {
               className="flex h-20 w-full items-center justify-center gap-1 border-b-2 border-black bg-transparent text-center font-sans text-4xl tracking-[0.18em] tabular-nums select-none"
               role="status"
             >
-              {result ? (
-                digits.split("").map((digit, index) => (
-                  <span
-                    className={cn(
-                      result === "success" && "text-green-600",
-                      result === "failure" &&
-                        digit !== sequence[index] &&
-                        "text-red-600",
-                    )}
-                    key={`${digit}-${index}`}
-                  >
-                    {digit}
-                  </span>
-                ))
-              ) : (
-                displayedDigits
-              )}
+              {result
+                ? digits.split("").map((digit, index) => (
+                    <span
+                      className={cn(
+                        result === "success" && "text-green-600",
+                        result === "failure" &&
+                          digit !== sequence[index] &&
+                          "text-red-600",
+                      )}
+                      key={`${digit}-${index}`}
+                    >
+                      {digit}
+                    </span>
+                  ))
+                : displayedDigits}
             </div>
 
             <p
@@ -212,20 +228,20 @@ function App() {
                 result === null && "text-muted-foreground",
               )}
             >
-              {result === "success"
-                ? resultMessage
-                : result === "failure"
-                  ? (
-                      <>
-                        {resultMessage}
-                        <span className="block text-muted-foreground">
-                          Correct: {expectedDigits}
-                        </span>
-                      </>
-                    )
-                  : hasStarted && !isRunning
-                    ? `Enter ${sequence.length} digits`
-                    : ""}
+              {result === "success" ? (
+                resultMessage
+              ) : result === "failure" ? (
+                <>
+                  {resultMessage}
+                  <span className="text-muted-foreground block">
+                    Correct: {expectedDigits}
+                  </span>
+                </>
+              ) : hasStarted && !isRunning ? (
+                `Enter ${sequence.length} digits`
+              ) : (
+                ""
+              )}
             </p>
           </div>
 
