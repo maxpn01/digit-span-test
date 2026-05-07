@@ -8,6 +8,8 @@ A small app for testing your working memory with neat UI (unlike other top websi
 
 The digit span memory test displays a short sequence of digits one at a time, then waits for you to enter the sequence from memory.
 
+[Read more about the test](http://help.cambridgebrainsciences.com/en/articles/624895-what-is-the-digit-span-test)
+
 ## Features
 
 - [x] adjustable digit count from 3 to 12
