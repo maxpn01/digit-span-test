@@ -150,7 +150,7 @@ function App() {
   }, [isRunning, sequence, speed, step]);
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-background px-5 text-foreground">
+    <main className="bg-background text-foreground flex min-h-screen items-center justify-center px-5">
       <section className="w-full max-w-sm">
         <header className="mb-10 flex items-center justify-center gap-3">
           <Brain className="size-10" strokeWidth={1.8} />
@@ -159,13 +159,13 @@ function App() {
           </h1>
           <a
             aria-label="Read a description of the Digit Span test"
-            className="group relative inline-flex size-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="group text-muted-foreground hover:text-foreground focus-visible:ring-ring relative inline-flex size-8 items-center justify-center rounded-full transition-colors focus-visible:ring-2 focus-visible:outline-none"
             href={digitSpanDescriptionUrl}
             rel="noreferrer"
             target="_blank"
           >
             <CircleHelp className="size-4" strokeWidth={1.9} />
-            <span className="pointer-events-none absolute left-1/2 top-full z-10 mt-2 w-48 -translate-x-1/2 rounded-md border bg-background px-3 py-2 text-center text-xs text-foreground opacity-0 shadow-sm transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+            <span className="bg-background text-foreground pointer-events-none absolute top-full left-1/2 z-10 mt-2 w-48 -translate-x-1/2 rounded-md border px-3 py-2 text-center text-xs opacity-0 shadow-sm transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
               What is the Digit Span test?
             </span>
           </a>
@@ -175,7 +175,7 @@ function App() {
           <div className="space-y-3">
             <div
               aria-label="Digit display"
-              className="flex h-20 w-full select-none items-center justify-center border-b-2 border-black bg-transparent text-center font-sans text-4xl tracking-[0.18em] tabular-nums"
+              className="flex h-20 w-full items-center justify-center border-b-2 border-black bg-transparent text-center font-sans text-4xl tracking-[0.18em] tabular-nums select-none"
               role="status"
             >
               {isRunning
@@ -223,9 +223,9 @@ function App() {
           <div className="grid grid-cols-2 items-end gap-2">
             <div className="grid grid-cols-2 gap-2">
               <label className="block space-y-1">
-                <span className="text-xs text-muted-foreground">Count</span>
+                <span className="text-muted-foreground text-xs">Count</span>
                 <select
-                  className="h-10 w-full appearance-none rounded-md border border-input bg-background bg-[url('data:image/svg+xml,%3Csvg_xmlns=%22http://www.w3.org/2000/svg%22_width=%2216%22_height=%2216%22_viewBox=%220_0_24_24%22_fill=%22none%22_stroke=%22black%22_stroke-width=%222%22_stroke-linecap=%22round%22_stroke-linejoin=%22round%22%3E%3Cpath_d=%22m6_9_6_6_6-6%22/%3E%3C/svg%3E')] bg-size-[14px_14px] bg-position-[right_0.5rem_center] bg-no-repeat px-2 pr-7 text-base outline-none focus:border-foreground"
+                  className="border-input bg-background focus:border-foreground h-10 w-full appearance-none rounded-md border bg-[url('data:image/svg+xml,%3Csvg_xmlns=%22http://www.w3.org/2000/svg%22_width=%2216%22_height=%2216%22_viewBox=%220_0_24_24%22_fill=%22none%22_stroke=%22black%22_stroke-width=%222%22_stroke-linecap=%22round%22_stroke-linejoin=%22round%22%3E%3Cpath_d=%22m6_9_6_6_6-6%22/%3E%3C/svg%3E')] bg-size-[14px_14px] bg-position-[right_0.5rem_center] bg-no-repeat px-2 pr-7 text-base outline-none"
                   onChange={(event) =>
                     setDigitCount(Number(event.target.value))
                   }
@@ -240,9 +240,9 @@ function App() {
               </label>
 
               <label className="block space-y-1">
-                <span className="text-xs text-muted-foreground">Speed</span>
+                <span className="text-muted-foreground text-xs">Speed</span>
                 <select
-                  className="h-10 w-full appearance-none rounded-md border border-input bg-background bg-[url('data:image/svg+xml,%3Csvg_xmlns=%22http://www.w3.org/2000/svg%22_width=%2216%22_height=%2216%22_viewBox=%220_0_24_24%22_fill=%22none%22_stroke=%22black%22_stroke-width=%222%22_stroke-linecap=%22round%22_stroke-linejoin=%22round%22%3E%3Cpath_d=%22m6_9_6_6_6-6%22/%3E%3C/svg%3E')] bg-size-[14px_14px] bg-position-[right_0.5rem_center] bg-no-repeat px-2 pr-7 text-base outline-none focus:border-foreground"
+                  className="border-input bg-background focus:border-foreground h-10 w-full appearance-none rounded-md border bg-[url('data:image/svg+xml,%3Csvg_xmlns=%22http://www.w3.org/2000/svg%22_width=%2216%22_height=%2216%22_viewBox=%220_0_24_24%22_fill=%22none%22_stroke=%22black%22_stroke-width=%222%22_stroke-linecap=%22round%22_stroke-linejoin=%22round%22%3E%3Cpath_d=%22m6_9_6_6_6-6%22/%3E%3C/svg%3E')] bg-size-[14px_14px] bg-position-[right_0.5rem_center] bg-no-repeat px-2 pr-7 text-base outline-none"
                   onChange={(event) => setSpeed(event.target.value as Speed)}
                   value={speed}
                 >
