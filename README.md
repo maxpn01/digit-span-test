@@ -2,7 +2,7 @@
 
 ![Digit Span Test screenshot](public/example.png)
 
-A small digit span app for testing your working memory with neat UI (unlike other top websites that show up in search ...)
+A small app for testing your working memory with neat UI (unlike other top websites that show up in search ...)
 
 ## What is it
 
