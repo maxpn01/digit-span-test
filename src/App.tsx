@@ -158,10 +158,10 @@ function App() {
       : digits || "0";
 
   return (
-    <main className="bg-background text-foreground flex min-h-screen items-center justify-center px-5">
+    <main className="app-main bg-background text-foreground flex min-h-screen items-center justify-center px-5">
       <a
         aria-label="Open GitHub repository"
-        className="text-muted-foreground hover:text-foreground focus-visible:ring-ring hover:bg-accent absolute top-5 right-5 inline-flex size-10 items-center justify-center rounded-full border transition-colors focus-visible:ring-2 focus-visible:outline-none"
+        className="github-link text-muted-foreground hover:text-foreground focus-visible:ring-ring hover:bg-accent absolute top-5 right-5 inline-flex size-10 items-center justify-center rounded-full border transition-colors focus-visible:ring-2 focus-visible:outline-none"
         href={githubRepoUrl}
         rel="noreferrer"
         target="_blank"
@@ -176,10 +176,10 @@ function App() {
         </svg>
       </a>
 
-      <section className="w-full max-w-sm">
-        <header className="mb-10 flex items-center justify-center gap-3">
-          <Brain className="size-10" strokeWidth={1.8} />
-          <h1 className="text-4xl font-semibold tracking-normal text-gray-800">
+      <section className="app-shell w-full max-w-sm">
+        <header className="app-header mb-10 flex items-center justify-center gap-3">
+          <Brain className="app-brain-icon size-10" strokeWidth={1.8} />
+          <h1 className="app-title text-4xl font-semibold tracking-normal text-gray-800">
             Digit Span Test
           </h1>
           <a
@@ -222,7 +222,7 @@ function App() {
 
             <p
               className={cn(
-                "h-10 text-center text-sm font-medium",
+                "status-message h-10 text-center text-sm font-medium",
                 result === "success" && "text-green-600",
                 result === "failure" && "text-red-600",
                 result === null && "text-muted-foreground",
@@ -262,7 +262,7 @@ function App() {
             )}
           </div>
 
-          <div className="grid grid-cols-2 items-end gap-2">
+          <div className="control-row grid grid-cols-2 items-end gap-2">
             <div className="grid grid-cols-2 gap-2">
               <label className="block space-y-1">
                 <span className="text-muted-foreground text-xs">Count</span>
@@ -295,7 +295,7 @@ function App() {
             </div>
 
             <Button
-              className="h-10 text-base"
+              className="start-button h-10 text-base"
               disabled={hasStarted && !isRunning}
               onClick={toggleTest}
               type="button"

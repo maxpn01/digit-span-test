@@ -65,3 +65,49 @@ button,
 select {
   font-family: inherit;
 }
+
+@media (max-width: 650px) {
+  .app-main {
+    overflow-x: hidden;
+  }
+
+  .github-link {
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .app-shell {
+    max-width: 350px;
+  }
+
+  .app-header {
+    gap: 8px;
+    margin-bottom: 34px;
+  }
+
+  .app-brain-icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+  }
+
+  .app-title {
+    font-size: 29px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .status-message {
+    font-size: 15px;
+  }
+
+  .control-row {
+    grid-template-columns: 200px 1fr;
+  }
+
+  .start-button {
+    font-size: 17px;
+  }
+}
