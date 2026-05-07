@@ -1,6 +1,6 @@
 # Digit Span Test
 
-![Digit Span Test screenshot](src/assets/example.png)
+![Digit Span Test screenshot](public/example.png)
 
 A small digit span app for testing your working memory with neat UI (unlike other top websites that show up in search ...)
 
